@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Online Mobile World</title>
+    <style>
+      /* Enhanced and professional-level styling with animation, transitions, responsiveness, and background image */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background: url("https://img.freepik.com/premium-vector/smartphone-high-digital-vector_276941-304.jpg")
+          no-repeat center center fixed;
+        background-size: cover;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        animation: fadeIn 0.6s ease-in;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      header {
+        background: rgba(0, 51, 102, 0.9);
+        color: white;
+        padding: 20px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        animation: slideDown 0.4s ease;
+      }
+
+      @keyframes slideDown {
+        from {
+          transform: translateY(-50px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .logo {
+        font-size: 26px;
+        font-weight: bold;
+        color: #00e1ff;
+        letter-spacing: 1px;
+      }
+
+      .nav-buttons button {
+        background: #00d9ff;
+        color: #003366;
+        border: none;
+        padding: 10px 18px;
+        border-radius: 8px;
+        margin-left: 12px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: all 0.3s ease;
+      }
+
+      .nav-buttons button:hover {
+        background: #00b3cc;
+        transform: scale(1.05);
+      }
+
+      #message {
+        text-align: center;
+        padding: 10px;
+        background: rgba(208, 235, 255, 0.9);
+        color: #003366;
+        display: none;
+        font-weight: bold;
+        animation: fadeIn 0.5s ease-in;
+      }
+
+      #products {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        padding: 40px;
+        flex: 1;
+      }
+
+      .product {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        padding: 20px 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: transform 0.25s ease;
+        animation: fadeIn 0.6s ease-in-out;
+        backdrop-filter: blur(2px);
+      }
+
+      .product:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      .product img {
+        height: 180px;
+        object-fit: contain;
+        margin-bottom: 10px;
+        border-radius: 8px;
+      }
+
+      .product h3 {
+        color: #003366;
+        margin: 12px 0 5px;
+        font-size: 18px;
+        font-weight: 600;
+      }
+
+      .product p {
+        font-size: 14px;
+        color: #444;
+        line-height: 1.4;
+      }
+
+      .product strong {
+        font-size: 16px;
+        color: #000;
+        margin: 10px 0;
+        display: block;
+      }
+
+      .buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .buttons button {
+        padding: 8px 14px;
+        background: #003366;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 500;
+      }
+
+      .buttons button:hover {
+        background: #0055aa;
+        transform: scale(1.05);
+      }
+
+      .qty-controls {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .qty-controls button {
+        padding: 6px 12px;
+        font-size: 16px;
+        border-radius: 5px;
+        background: #003366;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .qty-controls button:hover {
+        background: #0055aa;
+      }
+
+      .qty-controls span {
+        min-width: 26px;
+        text-align: center;
+        font-size: 16px;
+        font-weight: bold;
+        color: #003366;
+      }
+
+      .pagination {
+        text-align: center;
+        padding: 25px 0;
+      }
+
+      .pagination button {
+        margin: 0 12px;
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #003366;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      .pagination button:hover:not(:disabled) {
+        background-color: #0055aa;
+      }
+
+      .pagination button:disabled {
+        background-color: #999;
+        cursor: not-allowed;
+      }
+
+      footer {
+        background: rgba(0, 51, 102, 0.95);
+        text-align: center;
+        padding: 14px;
+        color: #eee;
+        font-size: 14px;
+        letter-spacing: 0.5px;
+        box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.2);
+        animation: slideUp 0.4s ease;
+      }
+
+      @keyframes slideUp {
+        from {
+          transform: translateY(30px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @media (max-width: 768px) {
+        header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
+          padding: 15px 20px;
+        }
+
+        .logo {
+          font-size: 22px;
+        }
+
+        .nav-buttons {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+        }
+
+        #products {
+          padding: 20px;
+          gap: 20px;
+        }
+
+        .product {
+          width: 100%;
+          max-width: 100%;
+          padding: 15px;
+          height: auto;
+        }
+
+        .product img {
+          height: 150px;
+        }
+
+        .buttons button,
+        .qty-controls button {
+          padding: 6px 10px;
+          font-size: 14px;
+        }
+
+        .pagination button {
+          padding: 8px 14px;
+          font-size: 14px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .product h3 {
+          font-size: 16px;
+        }
+
+        .product p {
+          font-size: 13px;
+        }
+
+        .product strong {
+          font-size: 14px;
+        }
+
+        .qty-controls span {
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo">Online Mobile World</div>
+      <div class="nav-buttons" id="nav"></div>
+    </header>
+
+    <div id="message"></div>
+    <div id="products"></div>
+
+    <div class="pagination">
+      <button onclick="prevPage()" id="prevBtn">Previous</button>
+      <button onclick="nextPage()" id="nextBtn">Next</button>
+    </div>
+
+    <footer>&copy; 2025 Online Mobile World. All rights reserved.</footer>
+
+    <script>
+      const user = JSON.parse(localStorage.getItem("user"));
+
+      if (user) {
+        if (user.role === "admin") {
+          window.location.href = "/admin.html";
+        }
+      }
+      let allProducts = [];
+      let productCartCount = {};
+      let currentPage = 1;
+      const perPage = 10;
+
+      function showMessage(msg, duration = 3000) {
+        const m = document.getElementById("message");
+        m.innerText = msg;
+        m.style.display = "block";
+        setTimeout(() => (m.style.display = "none"), duration);
+      }
+
+      function renderNavbar() {
+        const nav = document.getElementById("nav");
+        nav.innerHTML = "";
+
+        const cartBtn = document.createElement("button");
+        cartBtn.textContent = "🛒 Cart";
+        cartBtn.onclick = () => (location.href = "/cart.html");
+
+        if (user) {
+          const userBtn = document.createElement("button");
+          userBtn.textContent = "👤 " + user.name;
+
+          const logoutBtn = document.createElement("button");
+          logoutBtn.textContent = "Logout";
+          logoutBtn.onclick = () => {
+            const sure = confirm("Are you sure you want to logout?");
+            if (sure) {
+              localStorage.removeItem("user");
+            }
+            location.reload();
+          };
+
+          nav.appendChild(userBtn);
+          nav.appendChild(cartBtn);
+          nav.appendChild(logoutBtn);
+        } else {
+          const loginBtn = document.createElement("button");
+          loginBtn.textContent = "Login";
+          loginBtn.onclick = () => (location.href = "/login.html");
+
+          const signupBtn = document.createElement("button");
+          signupBtn.textContent = "Signup";
+          signupBtn.onclick = () => (location.href = "/signup.html");
+
+          nav.appendChild(loginBtn);
+          nav.appendChild(signupBtn);
+          nav.appendChild(cartBtn);
+        }
+      }
+
+      async function loadExistingCart() {
+        if (user) {
+          const res = await fetch(
+            `/get-cart?email=${encodeURIComponent(user.email)}`
+          );
+          const data = await res.json();
+          (data.cart || []).forEach((item) => {
+            productCartCount[item.id] = item.quantity || 1;
+          });
+        } else {
+          const cart = JSON.parse(localStorage.getItem("cart")) || [];
+          cart.forEach((item) => {
+            productCartCount[item.id] = item.quantity || 1;
+          });
+        }
+      }
+
+      async function loadProducts() {
+        const res = await fetch("/products");
+        allProducts = await res.json();
+        renderProducts();
+      }
+
+      function renderProducts() {
+        const container = document.getElementById("products");
+        container.innerHTML = "";
+
+        const start = (currentPage - 1) * perPage;
+        const end = start + perPage;
+        const paginated = allProducts.slice(start, end);
+
+        paginated.forEach((p) => {
+          const div = document.createElement("div");
+          div.className = "product";
+          const count = productCartCount[p.id] || 0;
+
+          div.innerHTML = `
+          <img src="${p.image}" alt="${p.name}" />
+          <h3>${p.name}</h3>
+          <p>${p.description}</p>
+          <strong>₹${p.price}</strong>
+          <div class="buttons" id="btns-${p.id}">
+            ${
+              count > 0
+                ? `
+              <div class="qty-controls">
+                <button onclick='changeQty("${p.id}", -1, ${JSON.stringify(
+                    p
+                  )})'>-</button>
+                <span id="count-${p.id}">${count}</span>
+                <button onclick='changeQty("${p.id}", 1, ${JSON.stringify(
+                    p
+                  )})'>+</button>
+              </div>
+            `
+                : `
+              <button onclick='handleAdd(${JSON.stringify(
+                p
+              )})'>Add to Cart</button>
+            `
+            }
+            <button onclick='buyNow(${JSON.stringify(p)})'>Buy Now</button>
+          </div>
+        `;
+          container.appendChild(div);
+        });
+
+        document.getElementById("prevBtn").disabled = currentPage === 1;
+        document.getElementById("nextBtn").disabled = end >= allProducts.length;
+      }
+
+      function prevPage() {
+        if (currentPage > 1) {
+          currentPage--;
+          renderProducts();
+        }
+      }
+
+      function nextPage() {
+        if (currentPage * perPage < allProducts.length) {
+          currentPage++;
+          renderProducts();
+        }
+      }
+
+      async function handleAdd(product) {
+        const id = product.id;
+        const btns = document.getElementById("btns-" + id);
+
+        const count = productCartCount[id] || 0;
+        const newCount = count + 1;
+        productCartCount[id] = newCount;
+
+        btns.innerHTML = `
+    <div class="qty-controls">
+      <button onclick='changeQty("${id}", -1, ${JSON.stringify(
+          product
+        )})'>-</button>
+      <span id="count-${id}">${newCount}</span>
+      <button onclick='changeQty("${id}", 1, ${JSON.stringify(
+          product
+        )})'>+</button>
+    </div>
+    <button onclick='buyNow(${JSON.stringify(product)})'>Buy Now</button>
+  `;
+
+        await updateCart(product, newCount); // ✅ this handles add/update both
+      }
+
+      async function changeQty(id, delta, product) {
+        const newCount = (productCartCount[id] || 0) + delta;
+
+        if (newCount <= 0) {
+          productCartCount[id] = 0;
+          document.getElementById("btns-" + id).innerHTML = `
+      <button onclick='handleAdd(${JSON.stringify(
+        product
+      )})'>Add to Cart</button>
+      <button onclick='buyNow(${JSON.stringify(product)})'>Buy Now</button>
+    `;
+
+          if (user) {
+            await fetch("/cart", {
+              method: "DELETE",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                username: user.email,
+                productId: product.id,
+              }),
+            });
+          } else {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            cart = cart.filter((item) => item.id !== product.id);
+            localStorage.setItem("cart", JSON.stringify(cart));
+          }
+
+          return;
+        }
+
+        if (user && newCount > product.quantity) {
+          showMessage("Can't add more than available stock.");
+          return;
+        }
+
+        productCartCount[id] = newCount;
+        document.getElementById("count-" + id).textContent = newCount;
+
+        await updateCart(product, newCount);
+      }
+
+      async function updateCart(product, quantity) {
+        if (user) {
+          await fetch("/cart", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              username: user.email,
+              cartItem: { ...product, quantity },
+            }),
+          });
+        } else {
+          let cart = JSON.parse(localStorage.getItem("cart")) || [];
+          const index = cart.findIndex((item) => item.id === product.id);
+          if (index !== -1) {
+            cart[index].quantity = quantity;
+          } else {
+            cart.push({ ...product, quantity });
+          }
+          localStorage.setItem("cart", JSON.stringify(cart));
+        }
+      }
+
+      function buyNow(product) {
+        if (!user) {
+          showMessage("Please login to buy this product.");
+          return;
+        }
+        showMessage("Proceeding to buy: " + product.name);
+      }
+
+      (async function init() {
+        renderNavbar();
+        await loadExistingCart();
+        await loadProducts();
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cart - Online Mobile World</title>
+<style>
+  * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: url('https://img.freepik.com/premium-vector/smartphone-high-digital-vector_276941-304.jpg') no-repeat center center fixed;
+  background-size: cover;
+  padding: 20px;
+  min-height: 100vh;
+  backdrop-filter: blur(6px);
+}
+
+h2 {
+  text-align: center;
+  color: #003366;
+  margin-bottom: 10px;
+  font-size: 28px;
+  font-weight: bold;
+  animation: fadeInDown 0.6s ease-out;
+}
+
+#message {
+  text-align: center;
+  color: red;
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+#cartItems {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  justify-content: center;
+  padding: 10px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.product {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.product:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.product img {
+  height: 180px;
+  object-fit: contain;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.product h3 {
+  color: #003366;
+  margin: 10px 0 5px;
+  font-size: 18px;
+}
+
+.product p {
+  font-size: 14px;
+  color: #666;
+}
+
+.product strong {
+  font-size: 16px;
+  color: #000;
+  margin: 10px 0;
+  display: block;
+}
+
+.qty-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.qty-controls button {
+  background: #003366;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s ease;
+}
+.qty-controls button:hover {
+  background: #0055aa;
+}
+
+.qty-controls span {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.summary {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 18px;
+  color: #003366;
+}
+
+.summary button {
+  margin: 10px 5px;
+  padding: 10px 20px;
+  background: #003366;
+  color: white;
+  border: none;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.summary button:hover {
+  background-color: #0055aa;
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-content {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  text-align: center;
+  width: 300px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  animation: zoomIn 0.3s ease-in-out;
+}
+
+.modal-content h3 {
+  margin-bottom: 10px;
+  color: #003366;
+}
+
+.modal-content img {
+  margin: 15px 0;
+  height: 200px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.close-btn {
+  background: red;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  margin-top: 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .product {
+    padding: 15px;
+  }
+
+  .product img {
+    height: 150px;
+  }
+
+  .qty-controls button {
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+
+  .summary {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  h2 {
+    font-size: 22px;
+  }
+
+  .summary button {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  .modal-content {
+    width: 90%;
+  }
+}
+
+</style>
+</head>
+<body>
+  <h2>🛒 Your Cart</h2>
+  <div id="message"></div>
+  <div id="cartItems"></div>
+
+  <div class="summary">
+    <div id="totals">Total Quantity: 0 | Total Price: ₹0</div>
+    <button onclick="window.location.href='index.html'">← Continue Shopping</button>
+    <button onclick="buyNow()">Buy Now</button>
+  </div>
+
+  <!-- Final Bill Modal -->
+  <div id="billModal" class="modal">
+    <div class="modal-content">
+      <h3>🧾 Final Bill</h3>
+      <div id="billInfo"></div>
+      <img id="qrCode" src="" alt="QR Code" />
+      <div><small>Scan to pay (Google Pay / PhonePe)</small></div>
+      <button class="close-btn" onclick="closeModal()">Close</button>
+    </div>
+  </div>
+
+ <script>
+  let cartItems = [];
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  async function loadCart() {
+    if (user) {
+      try {
+        const res = await fetch(`/get-cart?email=${encodeURIComponent(user.email)}`);
+        const data = await res.json();
+        cartItems = data.cart || [];
+      } catch (err) {
+        document.getElementById("message").textContent = "Error loading cart from server.";
+        cartItems = [];
+      }
+    } else {
+      cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+    }
+
+    // ✅ Ensure qty (user added) and quantity (stock) are present
+    cartItems = cartItems.map(item => ({
+      ...item,
+      qty: item.qty || item.quantity || 1,                          // user-added quantity
+      quantity: item.quantity || 1                                  // original stock
+    }));
+
+    renderCart();
+  }
+
+  function renderCart() {
+    const container = document.getElementById("cartItems");
+    const msg = document.getElementById("message");
+    msg.textContent = "";
+    container.innerHTML = "";
+
+    let totalQty = 0;
+    let totalPrice = 0;
+
+    cartItems.forEach((p, index) => {
+      totalQty += p.qty;
+      totalPrice += p.qty * Number(p.price);
+
+      const card = document.createElement("div");
+      card.className = "product";
+      card.innerHTML = `
+        <img src="${p.image}" alt="${p.name}" />
+        <h3>${p.name}</h3>
+        <p>${p.description}</p>
+        <strong>₹${p.price}</strong>
+        <div class="qty-controls">
+          <button onclick="decreaseQty(${index})">−</button>
+          <span id="qty-${index}">${p.qty || 0}</span>
+          <button onclick="increaseQty(${index})">+</button>
+        </div>
+      `;
+      container.appendChild(card);
+    });
+
+    document.getElementById("totals").textContent =
+      `Total Quantity: ${totalQty} | Total Price: ₹${totalPrice}`;
+  }
+
+  function decreaseQty(index) {
+    cartItems[index].qty--;
+    if (cartItems[index].qty <= 0) {
+      const removed = cartItems.splice(index, 1);
+      if (user) {
+        fetch("/cart", {
+          method: "DELETE",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            username: user.email,
+            productId: removed[0].id,
+          }),
+        });
+      }
+    }
+    updateCartStorage();
+    renderCart();
+  }
+
+  function increaseQty(index) {
+    const item = cartItems[index];
+
+    if (item.qty + 1 > item.quantity) {
+      document.getElementById("message").textContent =
+        `Only ${item.quantity} in stock for "${item.name}"`;
+      return;
+    }
+
+    item.qty++;
+    updateCartStorage();
+    renderCart();
+  }
+
+  function updateCartStorage() {
+    if (user) {
+      cartItems.forEach((item) => {
+        const { quantity, ...rest } = item; // ❌ Don't overwrite stock on backend
+        fetch("/cart", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            username: user.email,
+            cartItem: { ...rest, quantity: item.qty }, // Only send user’s qty
+          }),
+        });
+      });
+    } else {
+      const filtered = cartItems.filter(item => item.qty > 0);
+      localStorage.setItem("cart", JSON.stringify(filtered));
+    }
+  }
+
+  function buyNow() {
+    if (!user) {
+      document.getElementById("message").textContent = "Please login to proceed.";
+      return;
+    }
+
+    let totalQty = 0, totalPrice = 0;
+    cartItems.forEach((item) => {
+      totalQty += item.qty;
+      totalPrice += item.qty * Number(item.price);
+    });
+
+    const upiString = `upi://pay?pa=ishupal495ybl@okicici&pn=OnlineMobileWorld&am=${totalPrice}&cu=INR`;
+    const qrURL = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(upiString)}&size=200x200`;
+
+    document.getElementById("billInfo").innerHTML = `
+      <p>Total Quantity: <strong>${totalQty}</strong></p>
+      <p>Total Amount: <strong>₹${totalPrice}</strong></p>
+    `;
+    document.getElementById("qrCode").src = qrURL;
+    document.getElementById("billModal").style.display = "flex";
+  }
+
+  function closeModal() {
+    document.getElementById("billModal").style.display = "none";
+  }
+
+  loadCart();
+</script>
+
+</body>
+</html>

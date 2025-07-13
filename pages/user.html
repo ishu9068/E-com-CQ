@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>User Products - Online Mobile World</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #f1f6fc, #d6e4f0);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #003366;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #00d9ff;
+    }
+    .nav-buttons button {
+      background: #00d9ff;
+      color: #003366;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+    h2 {
+      text-align: center;
+      margin: 20px 0;
+      color: #003366;
+    }
+    #productList {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      padding: 20px;
+      flex: 1;
+    }
+    .product {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .product img {
+      width: 100%;
+      height: 180px;
+      object-fit: contain;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    .product h3 { color: #003366; margin: 10px 0 5px; }
+    .product p { font-size: 14px; color: #666; }
+    .product strong { font-size: 18px; display: block; margin-top: 10px; color: #000; }
+    footer {
+      background: #003366;
+      text-align: center;
+      padding: 10px;
+      color: #eee;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Online Mobile World</div>
+    <div class="nav-buttons" id="nav"></div>
+  </header>
+
+ <a href="admin.html"> <h2>
+   ← Go back
+  </h2></a>
+
+  <h2>Available Products</h2>
+  <div id="productList"></div>
+
+  <footer>
+    &copy; 2025 Online Mobile World. All rights reserved.
+  </footer>
+
+  <script>
+
+  let user = localStorage.getItem("user");
+  if (!user) {
+    alert("phala log in kr bhai");
+    window.location.href = "/index.html";
+  } else {
+    const userData = JSON.parse(user);
+    if (userData.role !== "admin") {
+      alert("Sirf admin ko access hai!");
+      window.location.href = "/index.html";
+    }
+  }
+
+
+     
+    function renderNavbar() {
+      const nav = document.getElementById("nav");
+      nav.innerHTML = "";
+      const user = localStorage.getItem("user");
+
+
+      if (user) {
+        const userData = JSON.parse(user);
+        const userBtn = document.createElement("button");
+        userBtn.textContent = "👤 " + userData.name;
+
+        const logoutBtn = document.createElement("button");
+        logoutBtn.textContent = "Logout";
+        logoutBtn.onclick = () => {
+          localStorage.removeItem("user");
+          alert("Logged out successfully");
+          
+          renderNavbar();
+          window.location.href = "/index.html";
+        };
+
+        nav.appendChild(userBtn);
+        nav.appendChild(logoutBtn);
+      } else {
+        const loginBtn = document.createElement("button");
+        loginBtn.textContent = "Login";
+        loginBtn.onclick = () => location.href = "/login.html";
+
+        const signupBtn = document.createElement("button");
+        signupBtn.textContent = "Signup";
+        signupBtn.onclick = () => location.href = "/signup.html";
+
+        nav.appendChild(loginBtn);
+        nav.appendChild(signupBtn);
+      }
+    }
+
+    async function loadProducts() {
+      const res = await fetch("/products");
+      const products = await res.json();
+      const container = document.getElementById("productList");
+      container.innerHTML = '';
+      products.forEach(p => {
+        const div = document.createElement("div");
+        div.className = "product";
+        div.innerHTML = `
+          <img src="${p.image}" alt="${p.name}" />
+          <h3>${p.name}</h3>
+          <p>${p.description}</p>
+          <strong>₹${p.price}</strong>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    renderNavbar();
+    loadProducts();
+  </script>
+</body>
+</html>

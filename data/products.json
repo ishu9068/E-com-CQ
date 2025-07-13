@@ -1,0 +1,178 @@
+[
+  {
+    "id": "1751965276911",
+    "name": "iPhone 14 Pro",
+    "description": "6.1‑inch Super Retina XDR, A16 Bionic, Pro triple‑camera system.",
+    "price": 98900,
+    "quantity": 10,
+    "image": "https://m.media-amazon.com/images/I/61XO4bORHUL._UF1000,1000_QL80_.jpg"
+  },
+  {
+    "id": "1751965276912",
+    "name": "iPhone 14 Plus",
+    "description": "6.7‑inch Super Retina XDR, A15 Bionic, dual‑camera system.",
+    "price": 89900,
+    "quantity": 5,
+    "image": "https://vsprod.vijaysales.com/media/catalog/product/2/0/206090-image1_3.jpg?optimize=medium&fit=bounds&height=500&width=500"
+  },
+  {
+    "id": "1751965276913",
+    "name": "iPhone 13",
+    "description": "6.1‑inch OLED, A15 Bionic, dual‑camera system.",
+    "price": 69900,
+    "quantity": 30,
+    "image": "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSU4ol82VVRtqN02_TbjIEGKzGE3oUERn_Hg2FIi0FZ2Haxrlo"
+  },
+  {
+    "id": "1751965276914",
+    "name": "Samsung Galaxy S23 Ultra",
+    "description": "6.8‑inch AMOLED, Snapdragon 8 Gen 2, 200 MP quad‑camera.",
+    "price": 124999,
+    "quantity": 25,
+    "image": "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1715785342/Croma%20Assets/Communication/Mobiles/Images/268886_0_d7qopj.png"
+  },
+  {
+    "id": "1751965276915",
+    "name": "Samsung Galaxy S23",
+    "description": "6.1‑inch AMOLED, Snapdragon 8 Gen 2, versatile triple‑camera.",
+    "price": 79999,
+    "quantity": 50,
+    "image": "https://images.samsung.com/is/image/samsung/p6pim/in/sm-s911blicins/gallery/in-galaxy-s23-s911-sm-s911blicins-535265815?$684_547_PNG$"
+  },
+  {
+    "id": "1751965276916",
+    "name": "Samsung Galaxy Z Fold 4",
+    "description": "7.6‑inch foldable AMOLED, multitasking powerhouse.",
+    "price": 184999,
+    "quantity": 22,
+    "image": "https://m.media-amazon.com/images/I/61cInRWmClL._UF1000,1000_QL80_.jpg"
+  },
+  {
+    "id": "1751965276917",
+    "name": "Google Pixel 7 Pro",
+    "description": "6.7‑inch LTPO OLED, Tensor G2, outstanding computational camera.",
+    "price": 84999,
+    "quantity": 35,
+    "image": "https://storage.googleapis.com/marvans-ecom.appspot.com/assets%2Fmarvansmarvansassets_marvansPixel%207pro18e99acad6a18f5d093f3419184d05c0d.webp"
+  },
+  {
+    "id": "1751965276918",
+    "name": "OnePlus 11",
+    "description": "6.7‑inch AMOLED, Snapdragon 8 Gen 2, Hasselblad‑tuned cameras.",
+    "price": 56999,
+    "quantity": 40,
+    "image": "https://m.media-amazon.com/images/I/61amb0CfMGL.jpg"
+  },
+  {
+    "id": "1751965276919",
+    "name": "OnePlus 10 Pro",
+    "description": "6.7‑inch LTPO AMOLED, Snapdragon 8 Gen 1, quad‑camera by Hasselblad.",
+    "price": 64999,
+    "quantity": 33,
+    "image": "https://m.media-amazon.com/images/I/618hqM-yxtL.jpg"
+  },
+  {
+    "id": "1751965276920",
+    "name": "Oppo Reno9 Pro",
+    "description": "6.7‑inch AMOLED, Dimensity 9200, sleek design.",
+    "price": 52999,
+    "quantity": 39,
+    "image": "https://images.fonearena.com/blog/wp-content/uploads/2022/11/OPPO-Reno-9-Pro-Plus-.jpg"
+  },
+  {
+    "id": "1751965276921",
+    "name": "Vivo X90 Pro",
+    "description": "6.78‑inch AMOLED, Dimensity 9200, Zeiss cameras.",
+    "price": 79999,
+    "quantity": 28,
+    "image": "https://bhatiamobile.com/file/2023/05/X90-Pro_Black_4.webp"
+  },
+  {
+    "id": "1751965276922",
+    "name": "Vivo V29 Pro",
+    "description": "6.78‑inch AMOLED, Dimensity 8200, slim & stylish.",
+    "price": 34999,
+    "quantity": 40,
+    "image": "https://rukminid2.flixcart.com/image/750/900/xif0q/mobile/a/m/m/v29-5g-v2250-vivo-original-imagtyqfdbgyfmj4.jpeg?q=90&crop=false"
+  },
+  {
+    "id": "1751965276923",
+    "name": "Xiaomi 13T Pro",
+    "description": "6.67‑inch AMOLED, Dimensity 9200+, 200 MP camera.",
+    "price": 49999,
+    "quantity": 60,
+    "image": "https://images-cdn.ubuy.co.in/6607900ec5bc935d51668cbd-xiaomi-13t-pro-5g-4g-lte-512gb-12gb.jpg"
+  },
+  {
+    "id": "1751965276924",
+    "name": "Motorola Edge 40",
+    "description": "6.67‑inch OLED, Snapdragon 8 Gen 2, ready‑to‑run gaming.",
+    "price": 31999,
+    "quantity": 48,
+    "image": "https://motorolain.vtexassets.com/arquivos/ids/158550/egde40_Viva-Magenta.png?v=638309911488700000"
+  },
+  {
+    "id": "1751965276925",
+    "name": "Realme GT 3",
+    "description": "6.74‑inch AMOLED, Snapdragon 8 Gen 2, 240 W fast charge.",
+    "price": 49999,
+    "quantity": 44,
+    "image": "https://rukminim2.flixcart.com/image/750/900/l3rmzrk0/mobile/a/f/2/-original-imagetmecznbydne.jpeg?q=90&crop=false"
+  },
+  {
+    "id": "1751965276926",
+    "name": "Realme 11 Pro+",
+    "description": "6.7‑inch AMOLED, Dimensity 920, 200 MP pro camera.",
+    "price": 34999,
+    "quantity": 42,
+    "image": "https://www.93mobiles.com/wp-content/uploads/2025/04/273449_0_mkzhmj.webp"
+  },
+  {
+    "id": "1751965276927",
+    "name": "Realme Narzo 60 Pro",
+    "description": "6.67‑inch AMOLED, Dimensity 7050, budget flagship.",
+    "price": 24999,
+    "quantity": 55,
+    "image": "https://rukminim3.flixcart.com/image/850/1000/xif0q/mobile/4/q/1/narzo-60-pro-5g-rmx3771-realme-original-imagrhtxnzgqq2dy.jpeg?q=90&crop=false"
+  },
+  {
+    "id": "1751965276928",
+    "name": "Poco F5 Pro",
+    "description": "6.67‑inch AMOLED, Snapdragon 8+ Gen 1, Dolby Atmos.",
+    "price": 29999,
+    "quantity": 31,
+    "image": "https://images-cdn.ubuy.co.in/66ebed36546c5128bb1c0f61-xiaomi-poco-f5-pro-5g-smartphone.jpg"
+  },
+  {
+    "id": "1751965276929",
+    "name": "Poco X7 Pro",
+    "description": "6.67‑inch AMOLED, Dimensity 8100, value king.",
+    "price": 24999,
+    "quantity": 58,
+    "image": "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202501/poco-x7-pro-020221168-16x9_1.jpg?VersionId=f60pEoMs0Ykf1SzLgiPpz1czsFZQWIrP&size=690:388"
+  },
+  {
+    "id": "1751965276930",
+    "name": "Samsung Galaxy A55",
+    "description": "6.4‑inch Super AMOLED, Exynos 1480, IP67 water‑resistant.",
+    "price": 29999,
+    "quantity": 36,
+    "image": "https://images.samsung.com/is/image/samsung/p6pim/in/sm-a556elbzins/gallery/in-galaxy-a55-5g-sm-a556-498926-sm-a556elbzins-540255081?$684_547_PNG$"
+  },
+  {
+    "id": "1752036915450",
+    "name": "iPhone 14 Pro",
+    "description": "bdiya ha bhai",
+    "price": 50000,
+    "quantity": 5,
+    "image": "ihkukjgkjv"
+  },
+  {
+    "id": "1752038580939",
+    "name": "new",
+    "description": "kjbbk",
+    "price": 7,
+    "quantity": 8,
+    "image": "jkiu"
+  }
+]

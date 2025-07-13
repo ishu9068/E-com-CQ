@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Signup - Online Mobile World</title>
+  <style>
+    * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: url('https://img.freepik.com/premium-vector/smartphone-high-digital-vector_276941-304.jpg') no-repeat center center/cover;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+}
+
+/* Form Box */
+form {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  animation: slideIn 0.6s ease-out;
+  transition: transform 0.3s ease;
+}
+form:hover {
+  transform: scale(1.01);
+}
+@keyframes slideIn {
+  from {
+    transform: translateY(-40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+h2 {
+  margin-bottom: 25px;
+  color: #003366;
+  font-size: 24px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border 0.3s;
+}
+input:focus,
+select:focus {
+  border-color: #0077cc;
+  outline: none;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: #003366;
+  color: white;
+  border: none;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+button:hover {
+  background: #0055aa;
+}
+
+#messageBox {
+  margin-bottom: 18px;
+  font-size: 15px;
+  font-weight: 500;
+  color: red;
+  height: 20px;
+}
+
+/* Bottom Links */
+.bottom-link {
+  margin-top: 18px;
+  font-size: 14px;
+  color: #003366;
+}
+.bottom-link a {
+  color: #0077cc;
+  text-decoration: none;
+  font-weight: bold;
+}
+.bottom-link a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  form {
+    padding: 30px 20px;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <div id="messageBox"></div>
+
+  <form id="signupForm">
+    <h2>Signup</h2>
+    <input type="text" id="name" placeholder="Name" required />
+    <input type="email" id="email" placeholder="Email" required />
+    <input type="password" id="password" placeholder="Password" required />
+    <select id="role" required>
+      <option value="">Select Role</option>
+      <option value="user">User</option>
+      <option value="admin">Admin</option>
+    </select>
+    <button type="submit">Signup</button>
+    <div class="bottom-link">
+      Already registered? <a href="login.html">Login now</a>
+    </div>
+  </form>
+
+  <script>
+    function showMessage(msg, color = "red") {
+      const box = document.getElementById("messageBox");
+      box.textContent = msg;
+      box.style.color = color;
+      setTimeout(() => {
+        box.textContent = "";
+      }, 3000);
+    }
+
+    document.getElementById("signupForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const role = document.getElementById("role").value;
+
+      if (!role) {
+        showMessage("Please select a role");
+        return;
+      }
+
+      try {
+        const res = await fetch("/signup", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email, password, role })
+        });
+
+        if (res.ok) {
+          showMessage("✅ Signup successful!", "green");
+          setTimeout(() => {
+            window.location.href = "login.html";
+          }, 1000);
+        } else {
+          showMessage("❌ User already exists");
+        }
+      } catch (err) {
+        showMessage("Something went wrong. Try again later.");
+      }
+    });
+  </script>
+</body>
+</html>
